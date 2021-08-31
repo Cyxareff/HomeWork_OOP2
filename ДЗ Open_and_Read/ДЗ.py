@@ -1,5 +1,5 @@
 # Задача 1
-
+#
 from pprint import pprint
 cook_book = {}
 b = ['ingredient_name', 'quantity', 'measure']
@@ -17,8 +17,9 @@ for line in menu:
 pprint(cook_book)
 print()
 menu.close()
-# Задача 2
 
+# # Задача 2
+#
 def lis(person_count, *dish):
     ing_dict = {}
     for j in dish:
@@ -40,18 +41,28 @@ b = []
 for i in a:
     if '.txt' in i:
         b.append(i)
+
 z = {}
-q = {}
 def open_file():
     with open(i, 'r', encoding='utf-8') as f:
         data = f.readlines()
         count_str1 = len(data)
-        z[i] = count_str1
+        q = {}
+        z[count_str1] = q
+        q[i] = data
 
 for i in b:
     open_file()
 
 with open('task_3.txt', 'w', encoding='utf-8') as file:
-    for key, value in sorted(z.items(), key=lambda x: x[1]):
-        file.write(key + '\n')
-        file.write(str(value) + '\n')
+    for count, name_text in sorted(z.items()):
+        for name, text in name_text.items():
+            file.write(name + '\n')
+            file.write(str(count) + '\n')
+            for str_ in text:
+                file.write(str_ + '\n')
+
+
+
+
+
